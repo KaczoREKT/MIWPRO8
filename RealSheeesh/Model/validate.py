@@ -2,6 +2,8 @@ import torch
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("MacOSX")
 
 from FeedForwardBlock import FeedForwardBlock
 from Encoder import Encoder
@@ -27,10 +29,7 @@ decoder = Decoder(decoder_layers)
 autoencoder = Autoencoder(encoder, decoder)
 
 # --- Krok 2: załaduj wytrenowane wagi (jeśli je zapisałeś) ---
-# Na przykład, jeśli w train.py po zakończeniu epok zapisałeś:
-# torch.save(autoencoder.state_dict(), 'autoencoder.pth')
-# to tutaj:
-autoencoder.load_state_dict(torch.load('autoencoder.pth'))
+autoencoder.load_state_dict(torch.load('autoencoder.pth', map_location='cpu'))
 autoencoder.eval()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

@@ -114,7 +114,7 @@ def knn_analysis(X_codes, y_labels):
 
 
 if __name__ == "__main__":
-    device = torch.device('cuda')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     autoencoder, encoder = get_model()
     train_loader = get_data(batch_size=128)
     train_model(autoencoder, train_loader, device)

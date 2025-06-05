@@ -8,5 +8,6 @@ class Autoencoder(nn.Module):
 
     def forward(self, x):
         code = self.encoder(x)  # kod: (batch, 32)
-        out = self.decoder(code)           # wywołanie tylko z argumentem code
+        out = self.decoder(code)
         return out
+
