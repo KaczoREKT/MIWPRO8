@@ -3,7 +3,6 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.use("MacOSX")
 
 from FeedForwardBlock import FeedForwardBlock
 from Encoder import Encoder
